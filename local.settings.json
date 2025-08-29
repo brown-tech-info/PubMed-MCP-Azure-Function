@@ -1,0 +1,9 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+  "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+  "FUNCTIONS_WORKER_RUNTIME": "python",
+  "PUBMED_API_KEY": "0a18570962c13c498a4888d6d0a75ff10008",
+  "PUBMED_EMAIL": "uribrown@gmail.com"
+  }
+}

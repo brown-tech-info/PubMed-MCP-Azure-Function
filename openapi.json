@@ -1,0 +1,92 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "PubMed MCP Azure Function",
+    "description": "Search PubMed articles and return titles and abstracts.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://pubmedmcpfunc.azurewebsites.net"
+    }
+  ],
+  "tags": [
+    {
+      "name": "PubMed",
+      "description": "Operations for PubMed search"
+    }
+  ],
+  "paths": {
+    "/api/pubmed_mcp": {
+      "get": {
+        "tags": ["PubMed"],
+        "operationId": "searchPubMedArticles",
+        "summary": "Search PubMed articles",
+        "description": "Returns a list of PubMed article titles and abstracts for a given query.",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search term for PubMed articles",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with article results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "title": { "type": "string" },
+                          "abstract": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "description": "Missing or invalid query parameter" },
+          "502": { "description": "Error from PubMed API" },
+          "500": { "description": "Internal server error" }
+  ,
+      "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    }
+    ,
+  "components": {
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      }
+    }
+  }
+}
