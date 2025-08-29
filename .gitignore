@@ -3,37 +3,30 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-
-# Azure Functions
-local.settings.json
+*.env
 .env
+.venv/
+venv/
+*.sqlite3
+
+# Azure Functions local settings
+local.settings.json
 
 # VS Code
 .vscode/
 
-# OS
-.DS_Store
-Thumbs.db
-
 # Logs
 *.log
 
-# Test & Coverage
-htmlcov/
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test and coverage
 .coverage
-.tox/
-
-# Misc
-*.swp
-*.bak
-*.tmp
-
-# Node
-node_modules/
-
-# Others
-*.sqlite3
-*.db
-
-# Ignore OpenAPI secrets
-openapi-secrets.json
+htmlcov/
+*.cover
+*.coverage
+*.egg-info/
+dist/
+build/
